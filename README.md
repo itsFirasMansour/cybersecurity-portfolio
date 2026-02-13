@@ -2,7 +2,6 @@
 
 This repository contains my hands-on cybersecurity, networking, cloud security, and incident response labs and projects.
 
-Built as part of my engineering training and preparation for international cybersecurity Master's scholarships.
 
 ## Focus Areas
 
