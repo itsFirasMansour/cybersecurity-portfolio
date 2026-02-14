@@ -63,13 +63,6 @@ Verified with:
 
 show vlan brief
 
-Screenshots:
-
-![VLAN Creation](assets/vlan-created1.png)
-![VLAN Creation](assets/vlan-created2.png)
-
----
-
 ### 2️⃣ Assigned Ports to VLANs
 Example:
 
@@ -87,10 +80,10 @@ Verified with:
 
 show vlan brief
 
-Screenshot:
+Screenshots:
 
-![Port Assignment](assets/port-assignment1.png)
-![Port Assignment](assets/port-assignment2.png)
+![VLAN Creation](assets/vlan-created1.png)
+![VLAN Creation](assets/vlan-created2.png)
 
 ---
 
@@ -134,11 +127,14 @@ Screenshot:
 
 ### 5️⃣ Connectivity Tests
 • PCs in same VLAN → successful ping  
-• PCs in different VLAN → routed via router  
+• PCs in different VLAN → routed via router
+
+in our exemple i will use PC1 for the connectivity test
 
 Screenshot:
 
-![Ping Test](assets/ping-test.png)
+![Ping Test](assets/ping-test1.png)
+![Ping Test](assets/ping-test2.png)
 
 ---
 
