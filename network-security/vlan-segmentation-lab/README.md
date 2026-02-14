@@ -60,8 +60,9 @@ Switch 2:
 Verified with:
 show vlan brief
 
-Screenshot:
-![VLAN Creation](assets/vlan-created.png)
+Screenshots:
+![VLAN Creation](assets/vlan-created1.png)
+![VLAN Creation](assets/vlan-created2.png)
 
 ---
 
