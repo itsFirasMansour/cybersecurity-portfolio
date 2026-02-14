@@ -1,1 +1,149 @@
+========================================================================================================
+% Router Configuration – Inter-VLAN Routing (Router-on-a-Stick) %
+========================================================================================================
+
+! G0/0 → connected to Switch 1
+interface gigabitEthernet 0/0
+ no shutdown
+exit
+
+interface g0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+exit
+
+interface g0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+exit
+
+! G0/1 → connected to Switch 2
+interface gigabitEthernet 0/1
+ no shutdown
+exit
+
+interface g0/1.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+exit
+
+interface g0/1.40
+ encapsulation dot1Q 40
+ ip address 192.168.40.1 255.255.255.0
+exit
+
+! Verify with: show ip interface brief
+
+========================================================================================================
+% Switch 1 Configuration – VLANs %
+========================================================================================================
+
+vlan 30
+ name Sales
+
+vlan 40
+ name Management
+
+! Assign Ports to VLANs
+
+! PC5 – Sales
+interface f0/1
+ switchport mode access
+ switchport access vlan 30
+ exit
+
+! PC6 – Sales
+interface f0/2
+ switchport mode access
+ switchport access vlan 30
+ exit
+
+! PC7 – Management
+interface f0/3
+ switchport mode access
+ switchport access vlan 40
+ exit
+
+! PC8 – Management
+interface f0/4
+ switchport mode access
+ switchport access vlan 40
+ exit
+
+! Configure Trunk Links
+interface fa0/23
+ switchport mode trunk
+ switchport trunk allowed vlan 30,40
+exit
+
+interface fa0/24
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30,40
+exit
+
+! Verify with: show vlan brief, show interfaces trunk
+
+========================================================================================================
+% Switch 2 Configuration – VLANs %
+========================================================================================================
+
+vlan 10
+ name HR
+
+vlan 20
+ name IT
+
+! Assign Ports to VLANs
+
+! PC1 – HR
+interface f0/1
+ switchport mode access
+ switchport access vlan 10
+ exit
+
+! PC2 – HR
+interface f0/2
+ switchport mode access
+ switchport access vlan 10
+ exit
+
+! PC3 – IT
+interface f0/3
+ switchport mode access
+ switchport access vlan 20
+ exit
+
+! PC4 – IT
+interface f0/4
+ switchport mode access
+ switchport access vlan 20
+ exit
+
+! Configure Trunk Links
+interface fa0/23
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+exit
+
+interface fa0/24
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30,40
+exit
+
+! Verify with: show vlan brief, show interfaces trunk
+
+========================================================================================================
+% VLAN Distribution Table – 8 PCs %
+========================================================================================================
+
+| Device      | VLAN | Role   | IP Address    | Subnet Mask    | Default Gateway |
+| ----------- | ---- | ------ | ------------- | -------------- | --------------- |
+| PC-ADMIN-1  | 10   | Admin  | 192.168.10.10 | 255.255.255.0  | 192.168.10.1    |
+| PC-ADMIN-2  | 10   | Admin  | 192.168.10.11 | 255.255.255.0  | 192.168.10.1    |
+| PC-IT-1     | 20   | IT     | 192.168.20.10 | 255.255.255.0  | 192.168.20.1    |
+| PC-IT-2     | 20   | IT     | 192.168.20.11 | 255.255.255.0  | 192.168.20.1    |
+| PC-SALES-1  | 30   | Sales  | 192.168.30.10 | 255.255.255.0  | 192.168.30.1    |
+| PC-SALES-2  | 30   | Sales  | 192.168.30.11 | 255.255.255.0  | 192.168.30.1    |
+| PC-MGMT-1   | 40   | Mgmt   | 192.168.40.10 | 255.255.255.0  | 192.168.40.1    |
+| PC-MGMT-2   | 40   | Mgmt   | 192.168.40.11 | 255.255.255.0  | 192.168.40.1    |
 
