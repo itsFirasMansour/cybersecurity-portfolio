@@ -50,17 +50,21 @@ Topology Screenshot:
 
 ### 1️⃣ Created VLANs on Switches
 Switch 1:
+
 • VLAN 10 → HR/Admin  
 • VLAN 20 → IT   
 
 Switch 2:
+
 • VLAN 30 → Sales  
 • VLAN 40 → Management 
 
 Verified with:
+
 show vlan brief
 
 Screenshots:
+
 ![VLAN Creation](assets/vlan-created1.png)
 ![VLAN Creation](assets/vlan-created2.png)
 
@@ -70,18 +74,23 @@ Screenshots:
 Example:
 
 Switch 1:
+
 Fa0/1–Fa0/2 → VLAN 10  
 Fa0/3–Fa0/4 → VLAN 20   
 
 Switch 2:
+
 Fa0/1–Fa0/2 → VLAN 30  
 Fa0/3–Fa0/4 → VLAN 40  
 
 Verified with:
+
 show vlan brief
 
 Screenshot:
-![Port Assignment](assets/port-assignment.png)
+
+![Port Assignment](assets/port-assignment1.png)
+![Port Assignment](assets/port-assignment2.png)
 
 ---
 
@@ -89,14 +98,18 @@ Screenshot:
 Configured trunk ports between switches and router to allow multiple VLANs.
 
 Example:
+
 Fa0/23 → trunk to router  
 Fa0/24 → trunk between switches  
 
 Verified with:
+
 show interfaces trunk
 
 Screenshot:
-![Trunk](assets/trunk.png)
+
+![Trunk](assets/trunk1.png)
+![Trunk](assets/trunk2.png)
 
 ---
 
@@ -110,9 +123,11 @@ G0/1.30 → 192.168.30.1
 G0/1.40 → 192.168.40.1  
 
 Verified with:
+
 show ip interface brief
 
 Screenshot:
+
 ![Routing](assets/inter-vlan.png)
 
 ---
@@ -122,6 +137,7 @@ Screenshot:
 • PCs in different VLAN → routed via router  
 
 Screenshot:
+
 ![Ping Test](assets/ping-test.png)
 
 ---
